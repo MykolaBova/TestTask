@@ -23,14 +23,10 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# CMake
-cmake-build-debug/
-
-# Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
-
 ## File-based project format:
 *.iws
+*.iml
+target/*
 
 ## Plugin-specific files:
 
@@ -55,7 +51,6 @@ fabric.properties
 ### JetBrains Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
- *.iml
  modules.xml
  .idea/misc.xml
  *.ipr

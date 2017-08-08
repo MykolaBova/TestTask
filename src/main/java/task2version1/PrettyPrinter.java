@@ -1,4 +1,4 @@
-package task2;
+package task2version1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class PrettyPrinter {
     //Delimiter used in CSV file
-    private static final String COMMA_DELIMITER = ";";
+    private static final String DELIMITER = ";";
 
     //Record attributes index
     private static final int RECORD_ID = 0;
@@ -39,7 +39,7 @@ public class PrettyPrinter {
             //Read the file line by line starting from the second line
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
-                String[] tokens = line.split(COMMA_DELIMITER);
+                String[] tokens = line.split(DELIMITER);
                 if (tokens.length > 0) {
                     //Create a new Record
                     Record record = new Record();
