@@ -20,6 +20,11 @@ public class PrettyPrinter {
     private static final int RECORD_AMOUNT = 4;
     private static final int RECORD_CURRENCY = 5;
 
+    /**
+     * Static helper method for read CSV file by its location.
+     * @param pathToFile path to file should be absolute
+     * @return List of Record
+     */
     public static List<Record> readCsvFile (String pathToFile){
 
         //Create a new list of records to be filled by CSV file data
@@ -60,6 +65,10 @@ public class PrettyPrinter {
         return records;
     }
 
+    /**
+     * Method print table of records to console
+     * @param records List of records to be printed
+     */
     public static void printReportToConsole(List<Record> records){
         String title1 = "----------------------------------------------------------------------------------------";
         String title2 = "|     id     | Type |          Description          | IsApproved |   Amount   |Currency|";

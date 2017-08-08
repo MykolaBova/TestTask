@@ -11,51 +11,56 @@ public class Anagrams {
      * Method checks for nulls, lengths and empty Strings, if they exists
      * @throws IllegalArgumentException
      *
-     * @param word1 first word
-     * @param word2 second word
+     * @param firstWord first word
+     * @param secondWord second word
      * @return String message "Strings are anagrams" if words are anagrams
      * or letters you need to change in first word to
      */
-    public String isAnagram(String word1, String word2) {
-        if (word1 == null || word2 == null) throw new IllegalArgumentException("Words can't be null");
-        if (word1 == "" || word2 == "") throw new IllegalArgumentException("One or two words is empty");
-        if (word1.length() != word2.length()) throw new IllegalArgumentException("Words have different length");
+    public String isAnagram(String firstWord, String secondWord) {
+        if (firstWord == null || secondWord == null || firstWord.isEmpty() || secondWord.isEmpty()) {
+            throw new IllegalArgumentException("Words can't be null or empty");
+        }
+        if (firstWord.length() != secondWord.length()) {
+            throw new IllegalArgumentException("Words have different length");
+        }
 
-        wordValidator(word1);
-        wordValidator(word2);
+        wordValidator(firstWord);
+        wordValidator(secondWord);
 
-        char [] word1array = word1.toLowerCase().toCharArray();
-        char [] word2array = word2.toLowerCase().toCharArray();
+        char [] firstWordArr = firstWord.toLowerCase().toCharArray();
+        char [] secondWordArr = secondWord.toLowerCase().toCharArray();
 
-        Arrays.sort(word1array);
-        Arrays.sort(word2array);
+        //Method sort from Arrays class worst-case complexity O(n log n).
+        Arrays.sort(firstWordArr);
+        Arrays.sort(secondWordArr);
 
-        if (Arrays.equals(word1array, word2array)) {
+        if (Arrays.equals(firstWordArr, secondWordArr)) {
             return "Strings are anagrams";
         } else {
-            return findUniqueCharacters(word1array, word2array);
+            return findUniqueCharacters(firstWordArr, secondWordArr);
         }
     }
 
     /**
      * Method find all the letters you need to change in the first
      * string to make the two strings anagrams.
-     * Complexity of this method is O(1)
-     * @param word1array first char array
-     * @param word2array second char array
+     * Arrays should be sorted
+     * Complexity of this method is O(n)
+     * @param firstWordArr first char array
+     * @param secondWordArr second char array
      * @return String of characters
      */
-    private String findUniqueCharacters(char[] word1array, char[] word2array){
-        HashSet<Character> word1Set = new HashSet<>();
-        HashSet<Character> word2Set = new HashSet<>();
+    private String findUniqueCharacters(char[] firstWordArr, char[] secondWordArr){
+        HashSet<Character> firstWordSet = new HashSet<>();
+        HashSet<Character> secondWordSet = new HashSet<>();
 
-        for(int i = 0; i < word1array.length; i++){
-            word1Set.add(word1array[i]);
-            word2Set.add(word2array[i]);
+        for(int i = 0; i < firstWordArr.length; i++){
+            firstWordSet.add(firstWordArr[i]);
+            secondWordSet.add(secondWordArr[i]);
         }
-        word1Set.removeAll(word2Set);
+        firstWordSet.removeAll(secondWordSet);
 
-        return word1Set.toString();
+        return firstWordSet.toString();
     }
 
     /**
@@ -66,5 +71,14 @@ public class Anagrams {
      */
     private void wordValidator (String word){
         if (!word.matches("[a-zA-Z]+")) throw new IllegalArgumentException("Words can contain only letters");
+    }
+
+    public static void main(String[] args) {
+        Anagrams anagrams = new Anagrams();
+        String firstWord = "abcd";
+        String secondWord = "dbac";
+        String thirdWord = "dddd";
+        System.out.println(anagrams.isAnagram(firstWord, secondWord));
+        System.out.println(anagrams.isAnagram(firstWord, thirdWord));
     }
 }
