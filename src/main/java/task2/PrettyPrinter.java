@@ -61,22 +61,27 @@ public class PrettyPrinter {
     }
 
     public static void printReportToConsole(List<Record> records){
-        String title1 = "--------------------------------------------------------------------------------";
-        String title2 = "|    id    | Type |       Description       | IsApproved |   Amount   |Currency|";
-        String title3 = "--------------------------------------------------------------------------------";
+        String title1 = "----------------------------------------------------------------------------------------";
+        String title2 = "|     id     | Type |          Description          | IsApproved |   Amount   |Currency|";
+        System.out.println(title1);
+        System.out.println(title2);
+        System.out.println(title1);
 
-
-
+        for (Record record : records){
+            System.out.format("|%11d |", record.getId());
+            System.out.print(String.format("%5s |", record.getType()));
+            System.out.print(String.format("%30s |", record.getDescription()));
+            System.out.print(String.format("%10s  |", record.isApproved()));
+            System.out.format("%11.2f |", record.getAmount());
+            System.out.print(String.format("%6s  |%n", record.getCurrency()));
+        }
+        System.out.println(title1);
     }
 
     public static void main(String[] args) {
         File file = new File("src/main/resources/report2017.csv");
         String pathToFile = file.getAbsolutePath();
         List<Record> records = readCsvFile(pathToFile);
-
-        //Print the new record list
-        for (Record record : records) {
-            System.out.println(record.toString());
-        }
+        printReportToConsole(records);
     }
 }
