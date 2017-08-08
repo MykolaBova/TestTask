@@ -21,19 +21,10 @@ public class Table {
     public void printTable (){
         if (table == null) throw new IllegalArgumentException("Table is empty");
 
-        printTitle();
         int numberOfRows = table.get(0).getSize();
-        for (int i = 1; i<numberOfRows ;i++){
+        for (int i = 0; i<numberOfRows ;i++){
             printRow(i);
         }
-    }
-
-    private void printTitle(){
-        for (Column column : table){
-            String formatTemplate = "%"+(ADDITIONAL_SPACES+column.getMaxSize())+"s |";
-            System.out.print(String.format(formatTemplate, column.getTitle()));
-        }
-        System.out.println();
     }
 
     private void printRow(int index){
@@ -43,6 +34,4 @@ public class Table {
         }
         System.out.println();
     }
-
-
 }
