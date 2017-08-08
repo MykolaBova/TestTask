@@ -16,6 +16,7 @@ public class Printer {
 
             while ((line = fileReader.readLine()) != null) {
                 String[] tokens = line.split(DELIMITER);
+
                 if (table == null) {
                     table = new Table(tokens.length);
                 }
@@ -41,6 +42,8 @@ public class Printer {
         File file = new File("src/main/resources/sample.csv");
         String pathToFile = file.getAbsolutePath();
         Table records = readCsvFile(pathToFile);
-        records.printTable();
+        if (records != null){
+            records.printTable();
+        }
     }
 }
