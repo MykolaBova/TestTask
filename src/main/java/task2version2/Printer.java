@@ -24,8 +24,8 @@ public class Printer {
                 if (tokens.length > 0) {
                     for(int i=0; i<tokens.length; i++){
                         table.getColumn(i).addData(tokens[i]);
-                        if (tokens[i].length() > table.getColumn(i).getRowLength()){
-                            table.getColumn(i).setRowLength(tokens[i].length());
+                        if (tokens[i].length() > table.getColumn(i).getMaxSize()){
+                            table.getColumn(i).setMaxSize(tokens[i].length());
                         }
                     }
                 }
@@ -39,7 +39,8 @@ public class Printer {
 
     public static void main(String[] args) {
         //File file = new File("src/main/resources/report2017.csv");
-        File file = new File("src/main/resources/sample.csv");
+        //File file = new File("src/main/resources/sample.csv");
+        File file = new File(args[0]);
         String pathToFile = file.getAbsolutePath();
         Table records = readCsvFile(pathToFile);
         if (records != null){

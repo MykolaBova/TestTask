@@ -30,7 +30,7 @@ public class Table {
 
     private void printTitle(){
         for (Column column : table){
-            String formatTemplate = "%"+(ADDITIONAL_SPACES+column.getRowLength())+"s |";
+            String formatTemplate = "%"+(ADDITIONAL_SPACES+column.getMaxSize())+"s |";
             System.out.print(String.format(formatTemplate, column.getTitle()));
         }
         System.out.println();
@@ -38,7 +38,7 @@ public class Table {
 
     private void printRow(int index){
         for (Column column : table){
-            String formatTemplate = "%"+(ADDITIONAL_SPACES+column.getRowLength())+"s |";
+            String formatTemplate = "%"+(ADDITIONAL_SPACES+column.getMaxSize())+"s |";
             System.out.print(String.format(formatTemplate, column.getData(index)));
         }
         System.out.println();

@@ -75,10 +75,10 @@ public class Anagrams {
 
     public static void main(String[] args) {
         Anagrams anagrams = new Anagrams();
-        String firstWord = "abcd";
-        String secondWord = "dbac";
-        String thirdWord = "dddd";
+//        String firstWord = "abcd";
+//        String secondWord = "dbac";
+        String firstWord = args[0];
+        String secondWord = args[1];
         System.out.println(anagrams.isAnagram(firstWord, secondWord));
-        System.out.println(anagrams.isAnagram(firstWord, thirdWord));
     }
 }

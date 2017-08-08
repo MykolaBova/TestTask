@@ -88,7 +88,8 @@ public class PrettyPrinter {
     }
 
     public static void main(String[] args) {
-        File file = new File("src/main/resources/report2017.csv");
+        //File file = new File("src/main/resources/report2017.csv");
+        File file = new File(args[0]);
         String pathToFile = file.getAbsolutePath();
         List<Record> records = readCsvFile(pathToFile);
         printReportToConsole(records);

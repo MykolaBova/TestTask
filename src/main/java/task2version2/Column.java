@@ -7,11 +7,11 @@ public class Column {
     private int rowLength;
     private List<String> dataArray = new ArrayList<>();
 
-    public int getRowLength() {
+    public int getMaxSize() {
         return rowLength;
     }
 
-    public void setRowLength(int rowLength) {
+    public void setMaxSize(int rowLength) {
         this.rowLength = rowLength;
     }
 
